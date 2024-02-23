@@ -21,6 +21,21 @@ panel_img = pygame.image.load('images/Icons/panel.png').convert_alpha()
 panel_img = pygame.transform.scale(panel_img, (800, 150))
 
 
+#define fonts
+font = pygame.font.SysFont('Jetbrains Mono', 18)
+
+#define colors
+white = (255, 255, 255)
+orange = (255, 165, 0)
+red = (255, 0, 0)
+
+
+#create function for drawing text
+def draw_text(text, font, text_col, x, y):
+	img = font.render(text, True, text_col)
+	screen.blit(img, (x, y))
+
+
 #function for drawing background
 def draw_bg():
 	screen.blit(background_img, (0, 0))
@@ -29,6 +44,11 @@ def draw_bg():
 #function for drawing panel
 def draw_panel():
 	screen.blit(panel_img, (0, screen_height - bottom_panel))
+	#show Alucards stats
+	draw_text(f'{alucard.name} HP: {alucard.hp}', font, white, 100, screen_height - bottom_panel +10)
+	for count, i in enumerate(demon_list):
+		#show name and health
+		draw_text(f'{i.name} HP: {i.hp}', font, white, 550, (screen_height - bottom_panel +10) + count * 60)
 
 
 #fighter class
@@ -43,7 +63,7 @@ class Fighter():
 		self.alive = True 
 		self.animation_list = []
 		self.frame_index = 0
-		self.action = 1 #0:idle, 1:attack, 2:damage, 3:death
+		self.action = 0 #0:idle, 1:attack, 2:damage, 3:death
 		self.update_time = pygame.time.get_ticks()
 		#load idle images
 		temp_list = []
