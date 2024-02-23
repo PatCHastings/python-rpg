@@ -82,7 +82,7 @@ class Fighter():
 		screen.blit(self.image, self.rect)
 
 
-alucard = Fighter(200, 260, 'Alucard', 30, 10, 3)
+alucard = Fighter(200, 275, 'Alucard', 30, 10, 3)
 #demon1 = Fighter(550, 270, 'Demon', 20, 6, 1)
 #demon2 = Fighter(690, 200, 'Demon', 20, 6, 2)
 warg = Fighter(550, 250, 'Warg', 40, 7, 1)
